@@ -17,13 +17,6 @@ class ExecuteView(execute.Execute):
                       'second_field': SecondField.first_value}:
                     json_response['email'] = json_email
 
-                case {'datetime_field': json_datetime,
-                      'first_field': FirstField.second_value,
-                      'second_field': SecondField.second_value}:
-                    json_response['datetime'] = json_datetime
-
-                case _:
-                    json_response['Warning'] = 'Empty content'
 
             await json.save_result(json_response)
             json.state = RunState.complete
