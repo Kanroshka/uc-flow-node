@@ -34,5 +34,3 @@ class CredentialType(flow.CredentialType):
     ]
     extends: Optional[List[str]] = []
     
-    # todo add icon
-    # icon: Optional[str] = ICON  

@@ -65,7 +65,7 @@ class Parameters(str, Enum):
     customer_next_lesson_date_to = 'customer_next_lesson_date_to'
     customer_tariff_till_from = 'customer_tariff_till_from'
     customer_tariff_till_to = 'customer_tariff_till_to'
-    customer_reject_id = 'customer_customer_reject_id'
+    customer_reject_id = 'customer_reject_id'
     customer_comment = 'customer_comment'
     customer_dob_from = 'customer_dob_from'
     customer_dob_to = 'customer_dob_to'

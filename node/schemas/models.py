@@ -1,4 +1,4 @@
-from typing import Literal, List
+from typing import Literal, List, Union
 from datetime import date
 
 from pydantic import BaseModel, constr
@@ -13,16 +13,16 @@ class CustomerName(BaseModel):
     customer_name: constr(max_length=50)
 
 class CustomerBranchIds(BaseModel):
-    customer_branch_ids: List[int]
+    customer_branch_ids: int
 
 class CustomerTeacherIds(BaseModel):
     customer_teacher_ids: List[int]
 
 class CustomerIsStudy(BaseModel):
-    customer_is_study: bool
+    customer_is_study: int
 
 class CustomerStudyStatusId(BaseModel):
-    customer_study_status_id: int
+    customer_study_status_id: str
 
 class CustomerLeadStatusId(BaseModel):
     customer_lead_status_id: int
@@ -34,7 +34,7 @@ class CustomerAssignedId(BaseModel):
     customer_assigned_id: int
 
 class CustomerLegalType(BaseModel):
-    customer_legal_type: Literal[1, 2]
+    customer_legal_type: int
 
 class CustomerLegalName(BaseModel):
     customer_legal_name: constr(max_length=50)
@@ -52,16 +52,16 @@ class CustomerPaidLessonCount(BaseModel):
     customer_paid_lesson_count: int
 
 class CustomerPhone(BaseModel):
-    customer_phone: List[str]
+    customer_phone: str
 
 class CustomerEmail(BaseModel):
-    customer_email: List[str]
+    customer_email: str
 
 class CustomerWeb(BaseModel):
-    customer_web: List[str]
+    customer_web: str
 
 class CustomerAddr(BaseModel):
-    customer_addr: List[str]
+    customer_addr: str
 
 class CustomerNote(BaseModel):
     customer_note: str
@@ -96,7 +96,7 @@ class CustomerBalanceBonusTo(BaseModel):
     customer_balance_bonus_to: int
 
 class CustomerRemoved(BaseModel):
-    customer_removed: Literal[0, 1, 2]
+    customer_removed: int
 
 class CustomerRemovedFrom(BaseModel):
     customer_removed_from: date

@@ -144,7 +144,7 @@ class NodeType(flow.NodeType):
         ),
         Property(
             displayName='Return all',
-            name='page',
+            name='return_all',
             type=Property.Type.BOOLEAN,
             default=True,
             displayOptions=DisplayOptions(
@@ -209,22 +209,24 @@ class NodeType(flow.NodeType):
                     values=[
                         Property(
                             type=Property.Type.NUMBER,
+                            name=Parameters.customer_id,
                             default='',
                         ),
                     ],
                 ),
                 Property(
                     displayName='is study',
-                    name=Parameters.customer_is_study,
                     description='состояние клиента (0-лид, 1-клиент)',
                     noDataExpression=True,
+                    name=Parameters.customer_is_study,
                     values=[
                         Property(
+                            name=Parameters.customer_is_study,
                             type=Property.Type.OPTIONS,
                             options=[
                                 OptionValue(
                                     name='Клиент',
-                                    value=1
+                                    value=1,
                                 ),
                                 OptionValue(
                                     name='Лид',
@@ -242,6 +244,7 @@ class NodeType(flow.NodeType):
                     values=[
                         Property(
                             type=Property.Type.NUMBER,
+                            name=Parameters.customer_study_status_id,
                             default='',
                         )
                     ],
@@ -252,6 +255,7 @@ class NodeType(flow.NodeType):
                     description='имя клиента',
                     values=[
                         Property(
+                            name=Parameters.customer_name,
                             type=Property.Type.STRING,
                             default='',
                         )
@@ -264,6 +268,7 @@ class NodeType(flow.NodeType):
                     values=[
                         Property(
                             type=Property.Type.STRING,
+                            name=Parameters.customer_gender,
                             default='',
                         )
                     ],
@@ -275,6 +280,7 @@ class NodeType(flow.NodeType):
                     values=[
                         Property(
                             type=Property.Type.NUMBER,
+                            name=Parameters.customer_age_from,
                             default='',
                         )
                     ],
@@ -285,6 +291,7 @@ class NodeType(flow.NodeType):
                     description='возраст клиента до',
                     values=[
                         Property(
+                            name=Parameters.customer_age_to,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -296,6 +303,7 @@ class NodeType(flow.NodeType):
                     description='контакты клиента',
                     values=[
                         Property(
+                            name=Parameters.customer_phone,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -308,6 +316,7 @@ class NodeType(flow.NodeType):
                     values=[
                         Property(
                             type=Property.Type.OPTIONS,
+                            name=Parameters.customer_legal_type,
                             default='',
                             options=[
                                 OptionValue(
@@ -321,7 +330,6 @@ class NodeType(flow.NodeType):
                             ],
                         ),
                     ],
-                    
                 ),
                 Property(
                     displayName='legal_name',
@@ -329,6 +337,7 @@ class NodeType(flow.NodeType):
                     description='имя заказчика',
                     values=[
                         Property(
+                            name=Parameters.customer_legal_name,
                             type=Property.Type.STRING,
                             default='',
                         )
@@ -340,6 +349,7 @@ class NodeType(flow.NodeType):
                     description='id юр лица',
                     values=[
                         Property(
+                            name=Parameters.customer_company_id,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -351,6 +361,7 @@ class NodeType(flow.NodeType):
                     description='остаток уроков от',
                     values=[
                         Property(
+                            name=Parameters.customer_lesson_count_from,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -362,6 +373,7 @@ class NodeType(flow.NodeType):
                     description='остаток уроков до',
                     values=[
                         Property(
+                            name=Parameters.customer_lesson_count_to,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -373,6 +385,7 @@ class NodeType(flow.NodeType):
                     description='баланс договора от',
                     values=[
                         Property(
+                            name=Parameters.customer_balance_contract_from,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -384,6 +397,7 @@ class NodeType(flow.NodeType):
                     description='баланс договора до',
                     values=[
                         Property(
+                            name=Parameters.customer_balance_contract_to,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -395,6 +409,7 @@ class NodeType(flow.NodeType):
                     description='баланс бонусов от',
                     values=[
                         Property(
+                            name=Parameters.customer_balance_bonus_from,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -406,6 +421,7 @@ class NodeType(flow.NodeType):
                     description='баланс бонусов до',
                     values=[
                         Property(
+                            name=Parameters.customer_balance_bonus_from,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -418,6 +434,7 @@ class NodeType(flow.NodeType):
                     values=[
                         Property(
                             type=Property.Type.OPTIONS,
+                            name=Parameters.customer_removed,
                             default='',
                             options=[
                                 OptionValue(
@@ -442,6 +459,7 @@ class NodeType(flow.NodeType):
                     description='дата отправки в архив от',
                     values=[
                         Property(
+                            name=Parameters.customer_removed_from,
                             type=Property.Type.DATE,
                             default='',
                         )
@@ -453,6 +471,7 @@ class NodeType(flow.NodeType):
                     description='дата отправки в архив',
                     values=[
                         Property(
+                            name=Parameters.customer_removed_to,
                             type=Property.Type.DATE,
                             default='',
                         )
@@ -464,6 +483,7 @@ class NodeType(flow.NodeType):
                     description='id уровня знаний',
                     values=[
                         Property(
+                            name=Parameters.customer_level_id,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -475,6 +495,7 @@ class NodeType(flow.NodeType):
                     description='id ответственного менеджера',
                     values=[
                         Property(
+                            name=Parameters.customer_assigned_id,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -486,6 +507,7 @@ class NodeType(flow.NodeType):
                     description='id ответственного педагога',
                     values=[
                         Property(
+                            name=Parameters.customer_employee_id,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -497,6 +519,7 @@ class NodeType(flow.NodeType):
                     description='id источника',
                     values=[
                         Property(
+                            name=Parameters.customer_lead_source_id,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -508,6 +531,7 @@ class NodeType(flow.NodeType):
                     description='id цвета',
                     values=[
                         Property(
+                            name=Parameters.customer_color,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -519,6 +543,7 @@ class NodeType(flow.NodeType):
                     description='примечание',
                     values=[
                         Property(
+                            name=Parameters.customer_note,
                             type=Property.Type.STRING,
                             default='',
                         )
@@ -530,6 +555,7 @@ class NodeType(flow.NodeType):
                     description='дата добавления от',
                     values=[
                         Property(
+                            name=Parameters.customer_date_from,
                             type=Property.Type.DATE,
                             default='',
                         )
@@ -541,6 +567,7 @@ class NodeType(flow.NodeType):
                     description='дата добавления до',
                     values=[
                         Property(
+                            name=Parameters.customer_date_to,
                             type=Property.Type.DATE,
                             default='',
                         )
@@ -552,6 +579,7 @@ class NodeType(flow.NodeType):
                     description='дата след.посещения от',
                     values=[
                         Property(
+                            name=Parameters.customer_next_lesson_date_from,
                             type=Property.Type.DATE,
                             default='',
                         )
@@ -563,6 +591,7 @@ class NodeType(flow.NodeType):
                     description='дата след.посещения до',
                     values=[
                         Property(
+                            name=Parameters.customer_next_lesson_date_to,
                             type=Property.Type.DATE,
                             default='',
                         )
@@ -574,6 +603,7 @@ class NodeType(flow.NodeType):
                     description='дата действия абонемента от',
                     values=[
                         Property(
+                            name=Parameters.customer_tariff_till_from,
                             type=Property.Type.DATE,
                             default='',
                         )
@@ -585,6 +615,7 @@ class NodeType(flow.NodeType):
                     description='дата действия абонемента до',
                     values=[
                         Property(
+                            name=Parameters.customer_tariff_till_to,
                             type=Property.Type.DATE,
                             default='',
                         )
@@ -596,6 +627,7 @@ class NodeType(flow.NodeType):
                     description='id причины отказа',
                     values=[
                         Property(
+                            name=Parameters.customer_reject_id,
                             type=Property.Type.NUMBER,
                             default='',
                         )
@@ -607,6 +639,7 @@ class NodeType(flow.NodeType):
                     description='комментарий',
                     values=[
                         Property(
+                            name=Parameters.customer_comment,
                             type=Property.Type.STRING,
                             default='',
                         )
@@ -618,6 +651,7 @@ class NodeType(flow.NodeType):
                     description='дата рождения от',
                     values=[
                         Property(
+                            name=Parameters.customer_dob_from,
                             type=Property.Type.DATE,
                             default='',
                         )
@@ -629,6 +663,7 @@ class NodeType(flow.NodeType):
                     description='дата рождения до',
                     values=[
                         Property(
+                            name=Parameters.customer_dob_to,
                             type=Property.Type.DATE,
                             default='',
                         )
@@ -640,6 +675,7 @@ class NodeType(flow.NodeType):
                     description='активные группы клиента',
                     values=[
                         Property(
+                            name=Parameters.customer_with_groups_true,
                             type=Property.Type.STRING,
                             default='',
                         ),
@@ -647,5 +683,277 @@ class NodeType(flow.NodeType):
                 ),
             ],
         ),
-
+        Property(
+            displayName='Parameters',
+            name='parameters',
+            type=Property.Type.COLLECTION,
+            default={},
+            displayOptions=DisplayOptions(
+                show={
+                    'api': [
+                        Api.url_api_v2,
+                    ],
+                    'resource': [
+                        Resource.customer,
+                    ],
+                    'operation': [
+                        Operation.create_customer,
+                    ],
+                },
+            ),
+            options=[
+                Property(
+                    displayName='name',
+                    name=Parameters.customer_name,
+                    description='имя клиента',
+                    values=[
+                        Property(
+                            name=Parameters.customer_name,
+                            type=Property.Type.STRING,
+                            default='',
+                        )
+                    ],
+                ),
+                Property(
+                    displayName='is study',
+                    name=Parameters.customer_is_study,
+                    description='состояние клиента (0-лид, 1-клиент)',
+                    noDataExpression=True,
+                    values=[
+                        Property(
+                            name=Parameters.customer_is_study,
+                            type=Property.Type.OPTIONS,
+                            options=[
+                                OptionValue(
+                                    name='Клиент',
+                                    value=1,
+                                    type=Property.Type.NUMBER,
+                                ),
+                                OptionValue(
+                                    name='Лид',
+                                    value=0,
+                                    type=Property.Type.NUMBER,
+                                )
+                            ],
+                            default='',
+                        ),
+                    ],
+                ),
+                Property(
+                    displayName='legal_type',
+                    name=Parameters.customer_legal_type,
+                    description='тип заказчика(1-физ лицо, 2-юр.лицо)',
+                    values=[
+                        Property(
+                            type=Property.Type.OPTIONS,
+                            name=Parameters.customer_legal_type,
+                            default='',
+                            options=[
+                                OptionValue(
+                                    name='Физ. лицо',
+                                    value=1,
+                                    type=Property.Type.NUMBER,
+                                ),
+                                OptionValue(
+                                    name='Юр. лицо',
+                                    value=2,
+                                    type=Property.Type.NUMBER,
+                                ),
+                            ],
+                        ),
+                    ],
+                    
+                ),
+                Property(
+                    displayName='branch_ids',
+                    name=Parameters.customer_branch_ids,
+                    description='массив идентификаторов филиалов',
+                    values=[
+                        Property(
+                            name=Parameters.customer_branch_ids,
+                            type=Property.Type.NUMBER,
+                            default='',
+                        )
+                    ]
+                ),
+            ]
+        ),
+        Property(
+            displayName='Parameters',
+            name='parameters',
+            type=Property.Type.COLLECTION,
+            default={},
+            displayOptions=DisplayOptions(
+                show={
+                    'api': [
+                        Api.url_api_v2,
+                    ],
+                    'resource': [
+                        Resource.customer,
+                    ],
+                    'operation': [
+                        Operation.update_customer,
+                    ],
+                },
+            ),
+            options=[
+                Property(
+                    displayName='name',
+                    name=Parameters.customer_name,
+                    description='имя клиента',
+                    values=[
+                        Property(
+                            name=Parameters.customer_name,
+                            type=Property.Type.STRING,
+                            default='',
+                        )
+                    ],
+                ),
+                Property(
+                    displayName='is study',
+                    name=Parameters.customer_is_study,
+                    description='состояние клиента (0-лид, 1-клиент)',
+                    noDataExpression=True,
+                    values=[
+                        Property(
+                            name=Parameters.customer_is_study,
+                            type=Property.Type.OPTIONS,
+                            options=[
+                                OptionValue(
+                                    name='Клиент',
+                                    value=1,
+                                    type=Property.Type.NUMBER,
+                                ),
+                                OptionValue(
+                                    name='Лид',
+                                    value=0,
+                                    type=Property.Type.NUMBER,
+                                )
+                            ],
+                            default='',
+                        ),
+                    ],
+                ),
+                Property(
+                    displayName='legal_type',
+                    name=Parameters.customer_legal_type,
+                    description='тип заказчика(1-физ лицо, 2-юр.лицо)',
+                    values=[
+                        Property(
+                            type=Property.Type.OPTIONS,
+                            name=Parameters.customer_legal_type,
+                            default='',
+                            options=[
+                                OptionValue(
+                                    name='Физ. лицо',
+                                    value=1,
+                                    type=Property.Type.NUMBER,
+                                ),
+                                OptionValue(
+                                    name='Юр. лицо',
+                                    value=2,
+                                    type=Property.Type.NUMBER,
+                                ),
+                            ],
+                        ),
+                    ],   
+                ),
+                 Property(
+                    displayName='phone',
+                    name=Parameters.customer_phone,
+                    description='контакты клиента',
+                    values=[
+                        Property(
+                            name=Parameters.customer_phone,
+                            type=Property.Type.NUMBER,
+                            default='',
+                        )
+                    ],
+                ),
+                Property(
+                    displayName='gender',
+                    name=Parameters.customer_gender,
+                    description='пол клиента',
+                    values=[
+                        Property(
+                            type=Property.Type.STRING,
+                            name=Parameters.customer_gender,
+                            default='',
+                        )
+                    ],
+                ),
+                Property(
+                    displayName='company_id',
+                    name=Parameters.customer_company_id,
+                    description='id юр лица',
+                    values=[
+                        Property(
+                            name=Parameters.customer_company_id,
+                            type=Property.Type.NUMBER,
+                            default='',
+                        )
+                    ],
+                ),
+                Property(
+                    displayName='dob_from',
+                    name=Parameters.customer_dob_from,
+                    description='дата рождения от',
+                    values=[
+                        Property(
+                            name=Parameters.customer_dob_from,
+                            type=Property.Type.DATE,
+                            default='',
+                        )
+                    ],
+                ),
+                Property(
+                    displayName='balance_contract_from',
+                    name=Parameters.customer_balance_contract_from,
+                    description='баланс договора от',
+                    values=[
+                        Property(
+                            name=Parameters.customer_balance_contract_from,
+                            type=Property.Type.NUMBER,
+                            default='',
+                        )
+                    ],
+                ),
+                Property(
+                    displayName='email',
+                    name=Parameters.customer_email,
+                    description='email',
+                    values=[
+                        Property(
+                            name=Parameters.customer_email,
+                            type=Property.Type.STRING,
+                            default='',
+                        )
+                    ],
+                ),
+                Property(
+                    displayName='web',
+                    name=Parameters.customer_web,
+                    description='web',
+                    values=[
+                        Property(
+                            name=Parameters.customer_web,
+                            type=Property.Type.STRING,
+                            default='',
+                        )
+                    ],
+                ),
+                Property(
+                    displayName='legal_name',
+                    name=Parameters.customer_legal_name,
+                    description='имя заказчика',
+                    values=[
+                        Property(
+                            name=Parameters.customer_legal_name,
+                            type=Property.Type.STRING,
+                            default='',
+                        )
+                    ],
+                ),
+            ],
+        ),
     ]
