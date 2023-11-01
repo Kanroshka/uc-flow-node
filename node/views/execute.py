@@ -1,24 +1,22 @@
-from uc_flow_nodes.schemas import NodeRunContext
 from uc_flow_nodes.views import execute
 from uc_flow_schemas.flow import RunState
 
-from node.schemas.enums import FirstField, SecondField
-
+from node.provider.alfacrm import Action
+from node.schemas.node import NodeRunContext
+from node.schemas.enums import Resource
 
 class ExecuteView(execute.Execute):
     async def post(self, json: NodeRunContext) -> NodeRunContext:
         try:
-            data = json.node.data.properties
-            json_response = {}
+            credentials = await json.get_credentials()
 
-            match data:
-                case {'email_field': json_email, 
-                      'first_field': FirstField.first_value,
-                      'second_field': SecondField.first_value}:
-                    json_response['email'] = json_email
+            action: Action = json.node.data.properties 
+            request = action.get_request(credentials.id, credentials.data)
+            
+            base_response = await json.requester.request(request)
+            response = json.node.data.properties.validate_response(base_response)
 
-
-            await json.save_result(json_response)
+            await self.request_json.save_result(response)
             json.state = RunState.complete
 
         except Exception as e:
