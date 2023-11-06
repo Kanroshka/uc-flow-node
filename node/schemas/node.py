@@ -3,7 +3,17 @@ from typing import Union
 from uc_flow_nodes.schemas import NodeRunContext as BaseNodeRunContext
 from uc_flow_schemas.flow import Node as BaseNode
 
-from node.provider.alfacrm import Authorization, GetCustomersFilteredAndPaging, UpdateCustomer, CreateCustomer
+from node.provider.hubspot import (
+    Authorization,
+    CreateContact, 
+    CreateDeal, 
+    CreateAssociation, 
+    UpdateContact, 
+    UpdateDeal, 
+    DeleteContact, 
+    DeleteDeal, 
+    ReadDeal,
+    )
 
 
 class NodeRunContext(BaseNodeRunContext):
@@ -11,9 +21,14 @@ class NodeRunContext(BaseNodeRunContext):
         class Data(BaseNode.Data):
             properties: Union[
                 Authorization,
-                GetCustomersFilteredAndPaging,
-                UpdateCustomer,
-                CreateCustomer,
+                CreateContact,
+                CreateDeal,
+                CreateAssociation, 
+                UpdateContact, 
+                UpdateDeal, 
+                DeleteContact, 
+                DeleteDeal,
+                ReadDeal,
             ]
         data: Data
     node: Node

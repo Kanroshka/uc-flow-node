@@ -1,9 +1,9 @@
 from uc_flow_nodes.views import execute
 from uc_flow_schemas.flow import RunState
 
-from node.provider.alfacrm import Action
+from node.provider.hubspot import Action
 from node.schemas.node import NodeRunContext
-from node.schemas.enums import Resource
+
 
 class ExecuteView(execute.Execute):
     async def post(self, json: NodeRunContext) -> NodeRunContext:
@@ -11,8 +11,7 @@ class ExecuteView(execute.Execute):
             credentials = await json.get_credentials()
 
             action: Action = json.node.data.properties 
-            request = action.get_request(credentials.id, credentials.data)
-            
+            request = action.get_request(credentials.id)
             base_response = await json.requester.request(request)
             response = json.node.data.properties.validate_response(base_response)
 

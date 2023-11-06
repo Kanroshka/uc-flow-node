@@ -1,72 +1,114 @@
 from enum import Enum
 
+from uc_http_requester.requester import Request
 
-URL_API_V2 = '/v2api/'
 
+BASE_URL_API = 'https://api.hubapi.com/'
+BASE_URL_API_v3 = 'https://api.hubapi.com/crm/v3/'
 
-class Api(str, Enum):
-    url_api_v2 = 'url_api_v2'
 
 class Resource(str, Enum):
-    customer = 'customer'
-    authorization = 'authorization'
+    check_authorization = 'check_authorization'
+    deal = 'deal'
+    contact = 'contact'
+    association = 'association'
+
 
 class Operation(str, Enum):
-    get_customers_filtered_and_paging  = 'get_customers_filtered_and_paging'
-    create_customer = 'create_customer'
-    update_customer = 'update_customer'
-    authorization = 'authorization'
+    create_deal = 'create_deal'
+    update_deal = 'update_deal'
+    delate_deal = 'delete_deal'
+    create_contact = 'create_contact'
+    update_contact = 'update_contact'
+    delate_contact = 'delete_contact'
+    create_association = 'create_association'
+    read_deal = 'read_deal'
+
 
 class Path(str, Enum):
-    authorization = 'auth/login'
-    get_customers_filtered_and_paging = 'location/index'
-    create_customer = 'location/create'
-    update_customer = 'location/update?id='
+    check_authorization = 'oauth/v2/private-apps/get/access-token-info'
+    create_deal = 'objects/deals'
+    update_deal = 'objects/deals/'
+    delate_deal = 'objects/deals/'
+    read_deal = 'objects/deals/'
+    create_contact = 'objects/contacts'
+    update_contact = 'objects/contacts/'
+    delate_contact = 'objects/contacts/'
+    create_association = 'associations/'
+    create_association_end = '/batch/create'
 
-class Parameters(str, Enum):
-    customer_id = 'customer_id'
-    customer_is_study = 'customer_is_study'
-    customer_study_status_id = 'customer_study_status_id'
-    customer_name = 'customer_name'
-    customer_branch_ids = 'customer_branch_ids'
-    customer_teacher_ids = 'customer_teacher_ids'
-    customer_lead_status_id = 'customer_lead_status_id'
-    customer_lead_source_id = 'customer_lead_source_id'
-    customer_assigned_id = 'customer_assigned_id'
-    customer_dob = 'customer_dob'
-    customer_gender = 'customer_gender'
-    customer_age_from = 'customer_age_from'
-    customer_age_to = 'customer_age_to'
-    customer_phone = 'customer_phone'
-    customer_email = 'customer_email'
-    customer_web = 'customer_web'
-    customer_addr = 'customer_addr'
-    customer_legal_type = 'customer_legal_type'
-    customer_legal_name = 'customer_legal_name'
-    customer_company_id = 'customer_company_id'
-    customer_paid_lesson_count = 'customer_paid_lesson_count'
-    customer_lesson_count_from = 'customer_lesson_count_from'
-    customer_lesson_count_to = 'customer_lesson_count_to'
-    customer_balance = 'customer_balance'
-    customer_balance_contract_from = 'customer_balance_contract_from'
-    customer_balance_contract_to = 'customer_balance_contract_to'
-    customer_balance_bonus_from = 'customer_balance_bonus_from'
-    customer_balance_bonus_to = 'customer_balance_bonus_to'
-    customer_removed = 'customer_removed'
-    customer_removed_from = 'customer_removed_from'
-    customer_removed_to = 'customer_removed_to'
-    customer_level_id = 'customer_level_id'
-    customer_employee_id = 'customer_employee_id'
-    customer_color = 'customer_color'
-    customer_note = 'customer_note'
-    customer_date_from = 'customer_date_from'
-    customer_date_to = 'customer_date_to'
-    customer_next_lesson_date_from = 'customer_next_lesson_date_from'
-    customer_next_lesson_date_to = 'customer_next_lesson_date_to'
-    customer_tariff_till_from = 'customer_tariff_till_from'
-    customer_tariff_till_to = 'customer_tariff_till_to'
-    customer_reject_id = 'customer_reject_id'
-    customer_comment = 'customer_comment'
-    customer_dob_from = 'customer_dob_from'
-    customer_dob_to = 'customer_dob_to'
-    customer_with_groups_true = 'customer_withGroups:true'
+
+class JsonMethods(str):
+    check_authorization = Request.Method.post
+    create_contact = Request.Method.post
+    create_deal = Request.Method.post
+    update_deal = Request.Method.patch
+    update_contact = Request.Method.patch
+    delate_deal = Request.Method.delete
+    delate_contact = Request.Method.delete
+    create_association = Request.Method.post
+    read_deal = Request.Method.get
+
+
+class Properties(str, Enum):
+    #  CREATE | UPDATE DEAL
+    deal_amount = 'deal_amount'
+    deal_close_date = 'deal_close_date'
+    deal_name = 'deal_name'
+    deal_pipeline = 'deal_pipeline'
+    deal_stage = 'deal_stage'
+
+    # CREATE | UPDATE CONTACT
+    contact_email = 'contact_email'
+    contact_firstname = 'contact_firstname'
+    contact_lastname = 'contact_lastname'
+    contact_phone = 'contact_phone'
+    contact_company = 'contact_company'
+    contact_website = 'contact_website'
+    contact_lifecyclestage = 'contact_lifecyclestage'
+
+
+class Association(str, Enum):
+    # CREATE AS. SEPARATELY
+    association_separately_from_id = 'association_separately_from_id'
+    association_separately_to_id = 'association_separately_to_id'
+    association_separately_type = 'association_separately_type'
+    associations_first = 'associations_first'
+    associations_second = 'associations_second'
+
+    # CREATE AS. WITH OTHER OBJECT
+    association_immediately_to_id = 'association_immediately_to_id'
+    association_immediately_category = 'association_immediately_category'
+    association_immediately_type_id = 'association_immediately_type_id'
+
+
+class ContactLifecyclestage(str, Enum):
+    subscriber = 'subscriber'
+    lead = 'lead'
+    marketingqualifiedlead = 'marketingqualifiedlead'
+    salesqualifiedlead = 'salesqualifiedlead'
+    opportunity = 'opportunity'
+    customer = 'customer'
+    evangelist = 'evangelist'
+    other = 'other'
+
+
+class DealStage(str, Enum):
+    appointmentscheduled = 'appointmentscheduled'
+    qualifiedtobuy = 'qualifiedtobuy'
+    presentationscheduled = 'presentationscheduled'
+    decisionmakerboughtin = 'decisionmakerboughtin'
+    contractsent = 'contractsent'
+    closedwon = 'closedwon'
+    closedlost = 'closedlost'
+
+
+class ObjectsAssociationsAPI(str, Enum):
+    contacts = 'Contacts'
+    deals = 'Deals'
+
+
+class AssociationsType(str, Enum):
+    deal_to_contact = 'deal_to_contact'
+    contact_to_deal = 'contact_to_deal'
+    
